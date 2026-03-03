@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarDios - Dr. Antonio Cobucci | Cardiologista em Itanhagá</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #fff5f5;
+            color: #2d3748;
+            line-height: 1.5;
+        }
+
+        /* Cores principais */
+        :root {
+            --primary: #c53030;
+            --primary-dark: #9b2c2c;
+            --primary-light: #fed7d7;
+            --white: #ffffff;
+            --gray-light: #f7fafc;
+            --gray: #e2e8f0;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* WhatsApp flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+            text-decoration: none;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--whatsapp-dark);
+            transform: scale(1.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #c53030 0%, #9b2c2c 100%);
+            color: white;
+            padding: 40px 0 60px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1 1 400px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            font-weight: 300;
+            color: #ffe5e5;
+        }
+
+        .hero-text .crm {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: #c53030;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #fef2f2;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-dark);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 0 0 200px;
+            text-align: center;
+            font-size: 7rem;
+            opacity: 0.9;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            padding: 50px 0;
+            background-color: white;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #fff5f5;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(197, 48, 48, 0.1);
+            border: 1px solid #fed7d7;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #c53030;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #c53030;
+        }
+
+        .card h3 {
+            color: #9b2c2c;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        /* Serviços */
+        .services {
+            padding: 60px 0;
+            background-color: #fff5f5;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #9b2c2c;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-item {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid #c53030;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .service-text h4 {
+            color: #9b2c2c;
+            margin-bottom: 5px;
+        }
+
+        .service-text p {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            background-color: #fed7d7;
+            color: #9b2c2c;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* Localização */
+        .location {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .location-box {
+            display: flex;
+            flex-wrap: wrap;
+            background: #fff5f5;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(197, 48, 48, 0.15);
+            border: 1px solid #fed7d7;
+        }
+
+        .location-info {
+            flex: 1 1 300px;
+            padding: 40px;
+        }
+
+        .location-info h3 {
+            color: #9b2c2c;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .location-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2d3748;
+        }
+
+        .cep-highlight {
+            background-color: #fed7d7;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: #9b2c2c;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .map {
+            flex: 1 1 300px;
+            min-height: 300px;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: 0;
+        }
+
+        /* CTA Final */
+        .cta {
+            background: linear-gradient(135deg, #c53030 0%, #9b2c2c 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta .btn {
+            background-color: white;
+            color: #c53030;
+            font-size: 1.2rem;
+            padding: 16px 40px;
+        }
+    .cta .btn:hover {
+            background-color: #fef2f2;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #9b2c2c;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #fed7d7;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-image {
+                font-size: 5rem;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/5521980412032?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Antonio%20Cobucci" 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Agendar consulta">
+        📱
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="crm">CRM 34.720/4 • RQE 37564</div>
+                <h1>Car<span>Dios</span> Clínica de Cardiologia</h1>
+                <p>Dr. Antonio Cobucci • Cardiologista</p>
+                <p>Cuidado humanizado e tecnologia avançada para a saúde do seu coração.</p>
+                
+                <div style="margin: 25px 0; background: rgba(255,255,255,0.15); padding: 15px 20px; border-radius: 15px; display: inline-block;">
+                    <div style="font-size: 1.2rem;">📅 Segundas e Quartas</div>
+                    <div style="font-size: 1.5rem; font-weight: 700;">13h às 19h</div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#agendar" class="btn btn-primary">Agendar consulta</a>
+                    <a href="https://wa.me/5521980412032" class="btn btn-whatsapp">📱 WhatsApp</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                ❤️<br>💓
+            </div>
+        </div>
+    </section>
+
+    <!-- Destaques -->
+    <section class="info-cards">
+        <div class="container">
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📍</div>
+                    <h3>Localização</h3>
+                    <p>Itanhagüi Plaza<br>Estrada do Itanhagá, 483 sl 206<br>Itanhagá, Rio de Janeiro - RJ</p>
+                    <div style="margin-top: 10px; font-weight: 600; color: #c53030;">CEP: 22753-319</div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🕒</div>
+                    <h3>Horário</h3>
+                    <p><strong>Segundas e Quartas</strong><br>13h às 19h</p>
+                    <p style="margin-top: 10px;">Consultas com hora marcada</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📞</div>
+                    <h3>Contato</h3>
+                    <p><strong>(21) 98041-2032</strong></p>
+                    <p>Telefone e WhatsApp</p>
+                    <div style="margin-top: 10px;">✔️ Retorno rápido</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Serviços</h2>
+                <p>Tudo que você precisa para cuidar do coração</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🩺</div>
+                    <div class="service-text">
+                        <h4>Consulta</h4>
+                        <p>Avaliação clínica completa</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📋</div>
+                    <div class="service-text">
+                        <h4>Consulta com Exames</h4>
+                        <p>Tudo no mesmo dia</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">⚕️</div>
+                    <div class="service-text">
+                        <h4>Risco Cirúrgico</h4>
+                        <p>Avaliação pré-operatória</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">❤️</div>
+                    <div class="service-text">
+                        <h4>Eletrocardiograma</h4>
+                        <p>Registro cardíaco</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🌈</div>
+                    <div class="service-text">
+                        <h4>Ecocardiograma</h4>
+                        <p>Com Color Doppler</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">⏱️</div>
+                    <div class="service-text">
+                        <h4>Holter</h4>
+                        <p>24h de monitorização</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📊</div>
+                    <div class="service-text">
+                        <h4>MAPA</h4>
+                        <p>Pressão 24h</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🏃</div>
+                    <div class="service-text">
+                        <h4>Teste Ergométrico</h4>
+                        <p>Em clínica associada</p>
+                        <div class="badge">associada</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Laudos -->
+    <section style="padding: 40px 0; background-color: white;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="background: #fff5f5; padding: 20px; border-radius: 15px; text-align: center; border-left: 5px solid #c53030;">
+                    <span style="font-size: 2rem;">📄</span>
+                    <p style="font-weight: 600; color: #9b2c2c;">Isenção IR</p>
+                </div>
+                <div style="background: #fff5f5; padding: 20px; border-radius: 15px; text-align: center; border-left: 5px solid #c53030;">
+                    <span style="font-size: 2rem;">🏢</span>
+                    <p style="font-weight: 600; color: #9b2c2c;">Seguradoras</p>
+                </div>
+                <div style="background: #fff5f5; padding: 20px; border-radius: 15px; text-align: center; border-left: 5px solid #c53030;">
+                    <span style="font-size: 2rem;">⚖️</span>
+                    <p style="font-weight: 600; color: #9b2c2c;">INSS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização -->
+    <section class="location" id="localizacao">
+        <div class="container">
+            <div class="location-box">
+                <div class="location-info">
+                    <h3>📍 Onde estamos</h3>
+                    <p><strong>Itanhagüi Plaza</strong></p>
+                    <p>Estrada do Itanhagá, 483 - Sala 206<br>Itanhagá, Rio de Janeiro - RJ</p>
+                    <div class="cep-highlight">📮 CEP: 22753-319</div>
+                    <p>🕒 <strong>Segundas e Quartas</strong> • 13h às 19h</p>
+                    <p>📞 <strong>(21) 98041-2032</strong></p>
+                    <p>🚗 Estacionamento no local</p>
+                    <a href="https://wa.me/5521980412032" class="btn btn-whatsapp" style="margin-top: 20px; display: inline-flex;">📱 Agendar WhatsApp</a>
+                </div>
+                <div class="map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.356748562587!2d-43.11593202468254!3d-22.90035667925225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9983e61a1b6b0b%3A0x7f7c7c8b8b8b8b8b!2sEstrada%20do%20Itanhag%C3%A1%2C%20483%20-%20Itanhag%C3%A1%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2022753-319!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="agendar">
+        <div class="container">
+            <h2>Cuide do seu coração</h2>
+            <p>Agende sua consulta e tenha um atendimento humanizado e acolhedor.</p>
+            <a href="https://wa.me/5521980412032?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Antonio%20Cobucci" class="btn">📱 Agendar agora</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>❤️ <strong>CarDios Clínica de Cardiologia</strong> ❤️</p>
+            <p>Dr. Antonio Cobucci • CRM 34.720/4 • RQE 37564</p>
+            <p>Estrada do Itanhagá, 483 sala 206 - Itanhagá, Rio de Janeiro - CEP: 22753-319</p>
+            <p>📞 (21) 98041-2032 | Atendimento: Segundas e Quartas, 13h às 19h</p>
+            <p style="margin-top: 20px;">© 2025 - Cuidando do seu coração com carinho</p>
+        </div>
+    </footer>
+</body>
+</html>
+
